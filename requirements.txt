@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+requests
+typer
+pydantic
+pandas
+akshare
+pyqlib
+lightgbm
+xgboost
