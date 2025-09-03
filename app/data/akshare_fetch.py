@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 def fetch_daily(code: str, start: str, end: str) -> pd.DataFrame:
+
     """Fetch daily bar data for a symbol using AKShare.
 
     This function no longer returns mock data when AKShare is unavailable. If
@@ -30,14 +31,16 @@ def fetch_daily(code: str, start: str, end: str) -> pd.DataFrame:
     try:
         df = ak.stock_zh_a_hist(
             symbol=code, period="daily", start_date=start, end_date=end
+
         )
         df.rename(columns={"日期": "date", "收盘": "close"}, inplace=True)
         df["date"] = pd.to_datetime(df["date"])
         return df[["date", "close"]]
-    except Exception as exc:  # pragma: no cover - network dependent
+
         raise RuntimeError(
             "无法获取行情数据，请确认已安装 akshare 且网络可用。"
         ) from exc
+
 
 
 __all__ = ["fetch_daily"]

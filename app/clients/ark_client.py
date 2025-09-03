@@ -9,6 +9,7 @@ import requests
 
 from app.config import config
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -18,6 +19,7 @@ class ArkClient:
     All network calls are mocked for offline usage. Replace TODO sections with
     real requests when integrating with the actual Ark API.
     """
+
 
     def __init__(
         self,
@@ -32,6 +34,7 @@ class ArkClient:
         self.session = requests.Session()
 
     # Knowledge base management
+
     def create_kb(self, name: str, desc: str = "") -> Dict[str, Any]:
         """Create a knowledge base. Returns mock response."""
         logger.info("Mock create_kb called: %s", name)
@@ -41,6 +44,7 @@ class ArkClient:
     def upsert_document(
         self, kb_id: str, file: Optional[str] = None, text: str = ""
     ) -> Dict[str, Any]:
+
         """Upload or update a document in the KB."""
         logger.info("Mock upsert_document in %s", kb_id)
         # TODO: implement API call with file or text
@@ -52,7 +56,8 @@ class ArkClient:
         # TODO: implement API call
         return {"kb_id": kb_id, "query": query, "results": ["mock result"]}
 
-    # Chat
+
+
     def chat(
         self,
         messages: Iterable[Dict[str, str]],
@@ -65,6 +70,7 @@ class ArkClient:
         """
 
         model = model or self.ai_cfg.get("provider", "mock-model")
+
         logger.info("Mock chat with model %s", model)
         last = list(messages)[-1]["content"] if messages else ""
         if kb_context:

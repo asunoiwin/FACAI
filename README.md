@@ -1,3 +1,4 @@
+
 # facai-ai-orchestrator
 
 Scaffold project for a RAG‑powered quantitative research assistant.  It wires
@@ -26,6 +27,7 @@ A supplementary `config.json` file centralises external API endpoints.  It
 contains sections for data sources (e.g. AkShare or Hong‑Kong specific feeds)
 and AI providers.  Edit this file to point the application at different
 services without modifying code.
+
 
 ## CLI Usage
 

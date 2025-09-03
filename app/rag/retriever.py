@@ -1,5 +1,6 @@
 """Retriever using ArkClient search API."""
 
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
@@ -10,6 +11,7 @@ if TYPE_CHECKING:  # pragma: no cover - type checking import
 
 class Retriever:
     def __init__(self, client: "ArkClient"):
+
         self.client = client
 
     def search(self, kb_id: str, query: str, top_k: int = 5):

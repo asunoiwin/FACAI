@@ -1,5 +1,6 @@
 """Prompt templates for AI interactions."""
 
+
 from typing import Any, Dict
 
 
@@ -14,9 +15,12 @@ def quant_research_template(
     ).format(code=context.get("code", "unknown"), metrics=metrics)
 
 
+
 def announce_summary_template(context: str, query: str) -> str:
     """Template for summarising announcements or news."""
+
     return f"Given the following context: {context}. Answer the query: {query}"
+
 
 
 __all__ = ["quant_research_template", "announce_summary_template"]

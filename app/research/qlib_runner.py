@@ -7,6 +7,7 @@ from typing import Dict, Iterable, Tuple
 
 import pandas as pd
 
+
 from app.utils.deps import ensure_package
 
 logger = logging.getLogger(__name__)
@@ -30,6 +31,7 @@ def run_factor_analysis(
 
     qlib.init()
     logger.info("Running factor analysis")
+
     df = df.copy()
     df["momentum"] = df["close"].pct_change().rolling(5).mean()
     metrics = {"IC": df["momentum"].corr(df["close"].pct_change())}
@@ -53,6 +55,7 @@ def backtest_strategy(
 
     qlib.init()
     logger.info("Running backtest")
+
     returns = features[label].fillna(0)
     equity = (1 + returns).cumprod()
     sharpe = returns.mean() / (returns.std() + 1e-9) * (252 ** 0.5)

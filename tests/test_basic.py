@@ -11,7 +11,9 @@ def test_settings_load():
 
 def test_research_orchestrator():
     res = run_research("分析000001.SZ的均线策略")
+
     assert "summary" in res or "error" in res
+
 
 
 def test_health_endpoint():
