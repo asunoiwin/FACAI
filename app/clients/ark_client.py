@@ -19,19 +19,28 @@ class ArkClient:
     real requests when integrating with the actual Ark API.
     """
 
-    def __init__(self, api_base: Optional[str] = None, api_key: Optional[str] = None):
+    def __init__(
+        self,
+        api_base: Optional[str] = None,
+        api_key: Optional[str] = None,
+    ):
         self.api_base = api_base or settings.ARK_API_BASE
         self.api_key = api_key or settings.ARK_API_KEY
         self.session = requests.Session()
 
-    # Knowledge base management -------------------------------------------------
+    # Knowledge base management
     def create_kb(self, name: str, desc: str = "") -> Dict[str, Any]:
         """Create a knowledge base. Returns mock response."""
         logger.info("Mock create_kb called: %s", name)
         # TODO: implement API call
         return {"kb_id": "mock-kb-id", "name": name, "desc": desc}
 
-    def upsert_document(self, kb_id: str, file: Optional[str] = None, text: str = "") -> Dict[str, Any]:
+    def upsert_document(
+        self,
+        kb_id: str,
+        file: Optional[str] = None,
+        text: str = "",
+    ) -> Dict[str, Any]:
         """Upload or update a document in the KB."""
         logger.info("Mock upsert_document in %s", kb_id)
         # TODO: implement API call with file or text
@@ -43,7 +52,7 @@ class ArkClient:
         # TODO: implement API call
         return {"kb_id": kb_id, "query": query, "results": ["mock result"]}
 
-    # Chat ---------------------------------------------------------------------
+    # Chat
     def chat(
         self,
         messages: Iterable[Dict[str, str]],

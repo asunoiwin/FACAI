@@ -22,7 +22,12 @@ def fetch_daily(code: str, start: str, end: str) -> pd.DataFrame:
         import akshare as ak  # type: ignore
 
         logger.info("Fetching data from AKShare for %s", code)
-        df = ak.stock_zh_a_hist(symbol=code, period="daily", start_date=start, end_date=end)
+        df = ak.stock_zh_a_hist(
+            symbol=code,
+            period="daily",
+            start_date=start,
+            end_date=end,
+        )
         df.rename(columns={"日期": "date", "收盘": "close"}, inplace=True)
         df["date"] = pd.to_datetime(df["date"])
         return df[["date", "close"]]
