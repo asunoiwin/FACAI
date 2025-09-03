@@ -1,6 +1,11 @@
 """Retriever using ArkClient search API."""
 
-from app.clients.ark_client import ArkClient
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from app.clients.ark_client import ArkClient
 
 
 class Retriever:

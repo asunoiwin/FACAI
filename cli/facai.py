@@ -6,7 +6,6 @@ from app.clients.ark_client import ArkClient
 from app.pipelines.chat_with_kb import chat_with_kb
 from app.pipelines.research_orchestrator import run_research
 from app.rag.kb_manager import KBManager
-from app.settings import settings
 
 app = typer.Typer()
 kb_app = typer.Typer()
