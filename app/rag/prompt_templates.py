@@ -1,13 +1,16 @@
 """Prompt templates for AI interactions."""
 
-from typing import Dict, Any
+from typing import Any, Dict
 
 
-def quant_research_template(context: Dict[str, Any], metrics: Dict[str, Any]) -> str:
+def quant_research_template(
+    context: Dict[str, Any], metrics: Dict[str, Any]
+) -> str:
     """Build prompt for quantitative research summary."""
     return (
         "Quantitative research results for {code}. Metrics: {metrics}. "
-        "Provide a short performance summary including Sharpe ratio and drawdown."
+        "Provide a short performance summary including "
+        "Sharpe ratio and drawdown."
     ).format(code=context.get("code", "unknown"), metrics=metrics)
 
 
