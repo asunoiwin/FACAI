@@ -7,6 +7,7 @@ from app.pipelines.chat_with_kb import chat_with_kb
 from app.pipelines.research_orchestrator import run_research
 from app.rag.kb_manager import KBManager
 
+
 app = typer.Typer()
 kb_app = typer.Typer()
 app.add_typer(kb_app, name="kb")
