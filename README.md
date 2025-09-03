@@ -1,3 +1,4 @@
+
 # facai-ai-orchestrator
 
 Scaffold project for a RAG‑powered quantitative research assistant.  It wires
