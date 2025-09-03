@@ -1,6 +1,5 @@
 """Retriever using ArkClient search API."""
 
-from app.clients.ark_client import ArkClient
 
 
 class Retriever:

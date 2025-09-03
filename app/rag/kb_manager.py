@@ -1,6 +1,6 @@
 """Knowledge base management helpers."""
 
-from app.clients.ark_client import ArkClient
+
 
 
 class KBManager:
