@@ -7,7 +7,8 @@ from typing import Any, Dict, Iterable, Optional
 
 import requests
 
-from app.settings import settings
+from app.config import config
+
 
 logger = logging.getLogger(__name__)
 
@@ -20,10 +21,19 @@ class ArkClient:
     """
 
 
-        self.api_base = api_base or settings.ARK_API_BASE
-        self.api_key = api_key or settings.ARK_API_KEY
+    def __init__(
+        self,
+        api_base: Optional[str] = None,
+        api_key: Optional[str] = None,
+    ):
+        self.ai_cfg = config.get("ai", {})
+        self.api_base = api_base or self.ai_cfg.get(
+            "base_url", "https://ark.example.com"
+        )
+        self.api_key = api_key or self.ai_cfg.get("api_key", "")
         self.session = requests.Session()
 
+    # Knowledge base management
 
     def create_kb(self, name: str, desc: str = "") -> Dict[str, Any]:
         """Create a knowledge base. Returns mock response."""
@@ -31,6 +41,9 @@ class ArkClient:
         # TODO: implement API call
         return {"kb_id": "mock-kb-id", "name": name, "desc": desc}
 
+    def upsert_document(
+        self, kb_id: str, file: Optional[str] = None, text: str = ""
+    ) -> Dict[str, Any]:
 
         """Upload or update a document in the KB."""
         logger.info("Mock upsert_document in %s", kb_id)
@@ -44,6 +57,7 @@ class ArkClient:
         return {"kb_id": kb_id, "query": query, "results": ["mock result"]}
 
 
+
     def chat(
         self,
         messages: Iterable[Dict[str, str]],
@@ -55,7 +69,8 @@ class ArkClient:
         In this mock implementation, we simply echo the last user message.
         """
 
-        model = model or settings.ARK_DEFAULT_MODEL
+        model = model or self.ai_cfg.get("provider", "mock-model")
+
         logger.info("Mock chat with model %s", model)
         last = list(messages)[-1]["content"] if messages else ""
         if kb_context:

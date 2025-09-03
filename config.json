@@ -1,0 +1,15 @@
+{
+  "data_sources": {
+    "akshare": {
+      "base_url": "https://www.akshare.xyz"
+    },
+    "hk_api": {
+      "base_url": "https://hk.example.com"
+    }
+  },
+  "ai": {
+    "provider": "doubao",
+    "api_key": "CHANGE_ME",
+    "base_url": "https://api.doubao.com"
+  }
+}

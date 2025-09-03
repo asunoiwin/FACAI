@@ -23,6 +23,12 @@ variables include `ARK_API_BASE`, `ARK_API_KEY`, `ARK_DEFAULT_MODEL` and
 `ARK_KB_ID` alongside runtime knobs such as `TIMEOUT`, `MAX_RETRIES` and
 `LOG_LEVEL`.
 
+A supplementary `config.json` file centralises external API endpoints.  It
+contains sections for data sources (e.g. AkShare or Hong‑Kong specific feeds)
+and AI providers.  Edit this file to point the application at different
+services without modifying code.
+
+
 ## CLI Usage
 
 The Typer based CLI exposes convenience commands for knowledge‑base management
